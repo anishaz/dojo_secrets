@@ -6,8 +6,8 @@ feature 'authentication' do
   feature "user sign-in" do
     scenario 'visits sign-in page' do
       visit '/sessions/new'
-      expect(page).to have_field('Email')
-      expect(page).to have_field('Password')
+      expect(page).to have_field('user[Email]')
+      expect(page).to have_field('user[Password]')
     end
     scenario 'logs in user if email/password combination is valid' do
       log_in
