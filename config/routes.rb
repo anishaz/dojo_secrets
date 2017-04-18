@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  get 'users/new' => 'users#new', as: "registration"
 
-  get 'users/edit'
+  get 'users/edit' => 'users#edit', as: "edit_profile"
+
+  post 'users' => 'users#create'
 
   get 'sessions/new' => 'sessions#new', as: "login"
 
