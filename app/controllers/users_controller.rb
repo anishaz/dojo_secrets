@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_login, except: [:new, :create]
+  before_action :require_correct_user, only: [:show, :edit, :update, :delete]
+
   def new
   end
 
@@ -34,11 +37,17 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id]).destroy
+    reset_session
     redirect_to registration_path
   end
 
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def require_correct_user
+    user = User.find(params[:id])
+    redirect_to current_user if current_user != user
   end
 end
