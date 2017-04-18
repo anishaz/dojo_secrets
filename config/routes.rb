@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
   get 'users/new' => 'users#new', as: "registration"
-
-  get 'users/edit' => 'users#edit', as: "edit_profile"
-
   post 'users' => 'users#create'
+  get 'users/:id' => 'users#show', as: "user"
+  get 'users/:id/edit' => 'users#edit', as: "edit_profile"
+  patch 'users/:id' => 'users#update'
+  delete 'users/:id' => 'users#destroy'
 
   get 'sessions/new' => 'sessions#new', as: "login"
 
   post 'sessions' => 'sessions#create'
-
-  get 'users/:id' => 'users#show', as: "user"
 
   delete '/sessions/:id' => 'sessions#destroy'
 
