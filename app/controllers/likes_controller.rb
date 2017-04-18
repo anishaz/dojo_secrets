@@ -5,7 +5,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find(params[:id])
+    @like = Like.where(user_id: session[:user_id], secret_id: params[:id]).first
     @like.destroy if current_user === @like.user
     redirect_to "/secrets"
   end
