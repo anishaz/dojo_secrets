@@ -2,8 +2,8 @@ class SessionsController < ApplicationController
   def new
   end
   def create
-    @user = User.find_by_email(params[:user][:Email])# Log User In
-    if @user && @user.authenticate(params[:user][:Password])# if authenticate true
+    @user = User.find_by_email(params[:user][:email])# Log User In
+    if @user && @user.authenticate(params[:user][:password])# if authenticate true
       session[:user_id] = @user.id# save user id to session
       redirect_to user_path(@user)# redirect to users profile page
     else # if authenticate false

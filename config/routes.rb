@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+
+  get 'likes/destroy'
+
+  get 'secrets' => 'secrets#index'
+  post 'secrets' => 'secrets#create'
+  delete 'secrets/:id' => 'secrets#destroy'
+
   get 'users/new' => 'users#new', as: "registration"
   post 'users' => 'users#create'
   get 'users/:id' => 'users#show', as: "user"
@@ -7,9 +15,7 @@ Rails.application.routes.draw do
   delete 'users/:id' => 'users#destroy'
 
   get 'sessions/new' => 'sessions#new', as: "login"
-
   post 'sessions' => 'sessions#create'
-
   delete '/sessions/:id' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
