@@ -1,1 +1,3 @@
+SECRETS
+
 In this application users should be able to login and post their secrets anonymously. User authentication with password encryption was utilized as well as user authorization to prevent other users from accessing your account.
